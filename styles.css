@@ -1845,3 +1845,185 @@ h2.hero-title-oversized, .hero-title-oversized {
   object-fit: contain;
   border-radius: var(--radius-md);
 }
+
+/* ==========================================================================
+   DIGITAL JOURNEY + ANIMATED COUNTERS SECTION
+   ========================================================================== */
+.digital-journey-section {
+  background: var(--color-primary-900, #0536A9);
+  padding: 5rem 0;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.journey-content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.journey-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.journey-description {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  max-width: 620px;
+}
+
+/* Social Media Icons Bar */
+.journey-social-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.journey-social-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.journey-social-icon:hover {
+  background: var(--color-accent, #0066FF);
+  border-color: var(--color-accent, #0066FF);
+  color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 102, 255, 0.4);
+}
+
+/* Right Column Counters */
+.journey-counters-right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.journey-counter-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+
+.journey-counter-card:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -4px rgba(0, 102, 255, 0.35);
+}
+
+.counter-number-wrapper {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #FFFFFF;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-plus {
+  color: var(--color-accent, #0066FF);
+}
+
+.counter-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+}
+
+/* Tablet Responsiveness (768px - 1024px) */
+@media (max-width: 1024px) {
+  .digital-journey-section {
+    padding: 3.75rem 0;
+  }
+
+  .journey-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .journey-counters-right {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Mobile Responsiveness (320px - 767px) */
+@media (max-width: 767px) {
+  .digital-journey-section {
+    padding: 3rem 0;
+  }
+
+  .journey-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .journey-title {
+    font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+  }
+
+  .journey-description {
+    font-size: 0.96rem;
+  }
+
+  .journey-counters-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.85rem;
+    width: 100%;
+  }
+
+  .journey-counter-card {
+    padding: 1.25rem 0.75rem;
+    border-radius: 14px;
+  }
+
+  .counter-number-wrapper {
+    font-size: clamp(2.2rem, 9.5vw, 2.75rem);
+    margin-bottom: 0.35rem;
+  }
+
+  .counter-label {
+    font-size: 0.88rem;
+  }
+}

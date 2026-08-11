@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModals();
   initLightbox();
   initPlacementsCarousel();
+  initJourneyCounters();
 });
 
 /* 01. Scroll Progress Bar */
@@ -312,4 +313,64 @@ function initPlacementsCarousel() {
   buildDots();
   updateCarousel();
   startAutoplay();
+}
+
+/* 09. Digital Journey Counters Animation */
+function initJourneyCounters() {
+  const section = document.getElementById('digital-journey');
+  if (!section) return;
+
+  const counters = section.querySelectorAll('.counter-val');
+  if (!counters.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let animated = false;
+
+  const animateCounters = () => {
+    if (animated) return;
+    animated = true;
+
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'), 10) || 0;
+      if (prefersReducedMotion) {
+        counter.textContent = target;
+        return;
+      }
+
+      const duration = target > 50 ? 1800 : 1500;
+      const startTime = performance.now();
+
+      const updateCount = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const currentCount = Math.floor(easeProgress * target);
+
+        counter.textContent = currentCount;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.textContent = target;
+        }
+      };
+
+      requestAnimationFrame(updateCount);
+    });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  } else {
+    animateCounters();
+  }
 }
