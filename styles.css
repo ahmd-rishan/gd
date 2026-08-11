@@ -1588,7 +1588,8 @@ h2.hero-title-oversized, .hero-title-oversized {
   border-color: var(--color-primary-500);
 }
 
-.faq-title {
+.faq-title, h2.faq-title {
+  margin: 0;
   padding: 1.4rem 1.75rem;
   font-weight: 700;
   font-size: 1.05rem;
