@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+
+Sitemap: https://gd-tawny.vercel.app/sitemap.xml
