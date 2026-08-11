@@ -424,7 +424,7 @@ p, body {
 }
 
 /* ==========================================================================
-   02. HERO SECTION (1-ROW NON-WRAPPING CATEGORY PILLS BAR)
+   02. HERO SECTION
    ========================================================================== */
 .hero-section {
   padding-top: calc(var(--header-height) + 3.5rem);
@@ -543,21 +543,128 @@ h2.hero-title-oversized, .hero-title-oversized {
   box-shadow: var(--shadow-md);
 }
 
+/* Tablet & Mobile Hero Responsiveness (<= 1024px) */
 @media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+  .hero-section {
+    padding-top: calc(var(--header-height) + 1.75rem);
+    padding-bottom: 3.5rem;
   }
-  .hero-actions {
+
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+
+  .hero-grid > div:first-child {
+    display: flex;
     flex-direction: column;
     width: 100%;
   }
-  .hero-actions .btn {
-    width: 100%;
+
+  h1.hero-meta-location {
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 0.85rem;
   }
+
+  h2.hero-title-oversized {
+    font-size: clamp(2rem, 7.5vw, 3.2rem);
+    line-height: 1.02;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtext {
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+    max-width: 100%;
+  }
+
+  /* BOTH CTA BUTTONS IN ONE SINGLE HORIZONTAL ROW ON MOBILE AND TABLET */
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 0%;
+    width: 50%;
+    min-width: 0;
+    padding: 0.75rem 0.5rem;
+    font-size: clamp(0.76rem, 2.2vw, 0.88rem);
+    min-height: 48px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* CATEGORY PILLS BAR HORIZONTALLY SCROLLABLE SINGLE ROW */
+  .hero-pills-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding-top: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .hero-pills-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-pill {
+    flex: 0 0 auto;
+    padding: 0.32rem 0.7rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* HERO IMAGE CARD BELOW CONTENT */
+  .hero-visual-card {
+    width: 100%;
+    margin-top: 0;
+  }
+
   .hero-visual-card img {
+    width: 100%;
     height: auto;
-    max-height: 400px;
+    max-height: 380px;
+    object-fit: cover;
+  }
+
+  .hero-visual-badge {
+    padding: 0.85rem 1rem;
+    bottom: 0.85rem;
+    left: 0.85rem;
+    right: 0.85rem;
+  }
+
+  .hero-visual-badge h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-actions {
+    gap: 0.35rem;
+  }
+
+  .hero-actions .btn {
+    padding: 0.7rem 0.35rem;
+    font-size: 0.74rem;
+    letter-spacing: -0.01em;
   }
 }
 
