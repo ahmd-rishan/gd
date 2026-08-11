@@ -6,7 +6,7 @@
    100% Fully Responsive Layout Architecture (320px to 1920px)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 
 :root {
   /* GD Royal Blue Shades */
@@ -160,12 +160,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-dark);
   line-height: 1.15;
   letter-spacing: -0.025em;
-}
-
-h1, .hero-title-oversized {
-  font-size: clamp(2.3rem, 6vw + 0.5rem, 5.2rem);
-  word-break: break-word;
-  overflow-wrap: break-word;
 }
 
 h2, .section-header-editorial h2 {
@@ -430,7 +424,7 @@ p, body {
 }
 
 /* ==========================================================================
-   02. HERO SECTION
+   02. HERO SECTION (SEO H1: DIGITAL MARKETING INSTITUTE IN MALAPPURAM)
    ========================================================================== */
 .hero-section {
   padding-top: calc(var(--header-height) + 3.5rem);
@@ -448,10 +442,8 @@ p, body {
   align-items: center;
 }
 
-.hero-meta-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
+h1.hero-meta-location, .hero-meta-location {
+  display: block;
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 700;
@@ -459,13 +451,18 @@ p, body {
   color: var(--color-primary-500);
   text-transform: uppercase;
   margin-bottom: 1.25rem;
+  line-height: 1.3;
 }
 
-.hero-title-oversized {
+h2.hero-title-oversized, .hero-title-oversized {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: clamp(2.3rem, 6vw + 0.5rem, 5.2rem);
   font-weight: 800;
   line-height: 0.98;
   margin-bottom: 1.5rem;
   color: var(--color-primary-900);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero-subtext {
