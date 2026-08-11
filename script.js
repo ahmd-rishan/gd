@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initJourneyCounters();
   initBlogCarousel();
   initBlogModal();
+  initTestimonialsCarousel();
 });
 
 /* 01. Scroll Progress Bar */
@@ -667,4 +668,150 @@ function initBlogModal() {
       closeModal();
     }
   });
+}
+
+/* 12. Testimonials Responsive Carousel */
+function initTestimonialsCarousel() {
+  const carousel = document.getElementById('testimonialCarousel');
+  if (!carousel) return;
+
+  const track = document.getElementById('testimonialTrack');
+  const cards = track ? track.querySelectorAll('.quote-card') : [];
+  const prevBtn = document.getElementById('testimonialPrev');
+  const nextBtn = document.getElementById('testimonialNext');
+  const dotsContainer = document.getElementById('testimonialDots');
+
+  if (!track || !cards.length) return;
+
+  let currentIndex = 0;
+  let autoplayTimer = null;
+
+  function getCardsPerView() {
+    const width = window.innerWidth;
+    if (width <= 767) return 1;
+    if (width <= 1024) return 2;
+    return 3;
+  }
+
+  function getMaxIndex() {
+    const perView = getCardsPerView();
+    return Math.max(0, cards.length - perView);
+  }
+
+  function buildDots() {
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = '';
+    const maxIdx = getMaxIndex();
+    const dotCount = maxIdx + 1;
+
+    for (let i = 0; i < dotCount; i++) {
+      const dot = document.createElement('button');
+      dot.className = `carousel-dot ${i === currentIndex ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Go to testimonial slide ${i + 1}`);
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel();
+        resetAutoplay();
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateCarousel() {
+    const maxIdx = getMaxIndex();
+    if (currentIndex > maxIdx) currentIndex = maxIdx;
+    if (currentIndex < 0) currentIndex = 0;
+
+    const firstCard = cards[0];
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.getBoundingClientRect().width;
+    const gap = parseFloat(window.getComputedStyle(track).gap) || 28;
+    const offset = currentIndex * (cardWidth + gap);
+
+    track.style.transform = `translateX(-${offset}px)`;
+
+    if (dotsContainer) {
+      const dots = Array.from(dotsContainer.children);
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    }
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex >= getMaxIndex()) ? 0 : currentIndex + 1;
+      updateCarousel();
+      resetAutoplay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex <= 0) ? getMaxIndex() : currentIndex - 1;
+      updateCarousel();
+      resetAutoplay();
+    });
+  }
+
+  // Touch Swipe Support
+  let startX = 0;
+  let currentX = 0;
+  let isSwiping = false;
+
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+    stopAutoplay();
+  }, { passive: true });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isSwiping) return;
+    currentX = e.touches[0].clientX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    if (!isSwiping) return;
+    const diff = startX - currentX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        currentIndex = (currentIndex >= getMaxIndex()) ? 0 : currentIndex + 1;
+      } else {
+        currentIndex = (currentIndex <= 0) ? getMaxIndex() : currentIndex - 1;
+      }
+      updateCarousel();
+    }
+    isSwiping = false;
+    startAutoplay();
+  });
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      currentIndex = (currentIndex >= getMaxIndex()) ? 0 : currentIndex + 1;
+      updateCarousel();
+    }, 5000);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+
+  window.addEventListener('resize', () => {
+    buildDots();
+    updateCarousel();
+  });
+
+  buildDots();
+  updateCarousel();
+  startAutoplay();
 }

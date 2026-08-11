@@ -1515,21 +1515,45 @@ h2.hero-title-oversized, .hero-title-oversized {
 .testimonials-section {
   padding: 5rem 0;
   background: var(--color-bg-body);
+  position: relative;
 }
 
-.quotes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+.testimonial-carousel-wrapper {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.testimonial-carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.testimonial-carousel-track {
+  display: flex;
+  gap: 1.75rem;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
 .quote-card {
+  flex: 0 0 calc((100% - (1.75rem * 2)) / 3);
+  min-width: 0;
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 2.25rem;
   box-shadow: var(--shadow-sm);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quote-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .quote-card blockquote {
@@ -1537,12 +1561,39 @@ h2.hero-title-oversized, .hero-title-oversized {
   font-style: italic;
   color: var(--color-text-dark);
   margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
 .author-info {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-top: auto;
+}
+
+/* Tablet (768px - 1024px): 2 cards visible */
+@media (max-width: 1024px) {
+  .quote-card {
+    flex: 0 0 calc((100% - 1.75rem) / 2);
+  }
+}
+
+/* Mobile (320px - 767px): 1 card visible */
+@media (max-width: 767px) {
+  .testimonials-section {
+    padding: 3.5rem 0;
+  }
+  .testimonial-carousel-track {
+    gap: 1rem;
+  }
+  .quote-card {
+    flex: 0 0 100%;
+    padding: 1.65rem 1.25rem;
+  }
+  .quote-card blockquote {
+    font-size: 0.96rem;
+    margin-bottom: 1.25rem;
+  }
 }
 
 .author-info img {

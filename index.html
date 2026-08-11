@@ -1173,42 +1173,56 @@
         <p>Real experiences from students who transformed their digital skills at GD Academy.</p>
       </div>
 
-      <div class="quotes-grid">
-        <div class="quote-card">
-          <div style="color: var(--color-accent); font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
-          <blockquote>"GD Academy is the best digital marketing academy in Manjeri. They provide 100% practical classes
-            and solid placement support."</blockquote>
-          <div class="author-info">
-            <div>
-              <h5 style="font-size: 1rem;">Hashir V</h5>
-              <span style="color: var(--color-text-muted); font-size: 0.82rem;">Digital Marketing Student</span>
+      <div class="testimonial-carousel-wrapper" id="testimonialCarousel">
+        <button class="carousel-arrow carousel-prev" id="testimonialPrev" aria-label="Previous Testimonials">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="carousel-arrow carousel-next" id="testimonialNext" aria-label="Next Testimonials">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="testimonial-carousel-track-container">
+          <div class="testimonial-carousel-track" id="testimonialTrack">
+            <div class="quote-card">
+              <div style="color: var(--color-accent); font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
+              <blockquote>"GD Academy is the best digital marketing academy in Manjeri. They provide 100% practical classes and solid placement support."</blockquote>
+              <div class="author-info">
+                <div>
+                  <h5 style="font-size: 1rem;">Hashir V</h5>
+                  <span style="color: var(--color-text-muted); font-size: 0.82rem;">Digital Marketing Student</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div style="color: var(--color-accent); font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
+              <blockquote>"Loved my experience at GD Academy! The trainers focus on equipping students with industry-relevant skills."</blockquote>
+              <div class="author-info">
+                <div>
+                  <h5 style="font-size: 1rem;">Shabeeb</h5>
+                  <span style="color: var(--color-text-muted); font-size: 0.82rem;">ADDA Diploma Graduate</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <div style="color: var(--color-accent); font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
+              <blockquote>"The Digital Mastery course is designed perfectly for beginners, especially students after Plus Two."</blockquote>
+              <div class="author-info">
+                <div>
+                  <h5 style="font-size: 1rem;">Safwan</h5>
+                  <span style="color: var(--color-text-muted); font-size: 0.82rem;">Digital Marketing Graduate</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="quote-card">
-          <div style="color: var(--color-accent); font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
-          <blockquote>"Loved my experience at GD Academy! The trainers focus on equipping students with
-            industry-relevant skills."</blockquote>
-          <div class="author-info">
-            <div>
-              <h5 style="font-size: 1rem;">Shabeeb</h5>
-              <span style="color: var(--color-text-muted); font-size: 0.82rem;">ADDA Diploma Graduate</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="quote-card">
-          <div style="color: var(--color-accent); font-size: 1.1rem; margin-bottom: 0.75rem;">★★★★★</div>
-          <blockquote>"The Digital Mastery course is designed perfectly for beginners, especially students after Plus
-            Two."</blockquote>
-          <div class="author-info">
-            <div>
-              <h5 style="font-size: 1rem;">Safwan</h5>
-              <span style="color: var(--color-text-muted); font-size: 0.82rem;">Digital Marketing Graduate</span>
-            </div>
-          </div>
-        </div>
+        <div class="carousel-dots" id="testimonialDots"></div>
       </div>
     </div>
   </section>
