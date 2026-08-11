@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Bun lockfile (optional — keep if needed for reproducible builds)
+# bun.lock
+
+# Package files (keep for reference)
+# package.json
+
+# Build scripts (optional — can remove from repo)
+convert_webp.js
+verify_webp.js
+
+# OS files
+.DS_Store
+Thumbs.db
